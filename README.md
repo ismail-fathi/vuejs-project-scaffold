@@ -17,6 +17,7 @@ Once you clone the projec, change:
 - The project name as you want
 - The package name in `package.json`
 - The project title in `index.html`
+- Change the Git remote origin using: git remote set-url origin https://github.com/ismail-fathi/{repo-name}.git
 
 ## Project Setup
 
