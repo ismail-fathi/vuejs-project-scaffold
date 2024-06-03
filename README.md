@@ -47,6 +47,12 @@ npm run build
 npm run test:unit
 ```
 
+or if you want to use the UI
+
+```sh
+npm run test:unit:unit
+```
+
 ### Lint with [ESLint](https://eslint.org/)
 
 ```sh
