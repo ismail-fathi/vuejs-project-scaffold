@@ -58,3 +58,9 @@ npm run test:unit:unit
 ```sh
 npm run lint
 ```
+
+### Format with Prettier
+
+```sh
+npm run format
+```
