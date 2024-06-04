@@ -18,6 +18,17 @@ Once you clone the projec, change:
 - The package name in `package.json`
 - The project title in `index.html`
 - Change the Git remote origin using: git remote set-url origin https://github.com/ismail-fathi/{repo-name}.git
+- Add a `.env` file to set your Firebase configuration variables:
+
+```
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+VITE_FIREBASE_MEASUREMENT_ID=
+```
 
 ## Project Setup
 
