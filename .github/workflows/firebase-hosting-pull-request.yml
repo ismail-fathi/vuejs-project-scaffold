@@ -1,12 +1,14 @@
 name: Deploy to Firebase Hosting on PR
-on: pull_request
+on:
+  push:
+    branches:
+      - 'feature/**'
 permissions:
   checks: write
   contents: read
   pull-requests: write
 jobs:
   build_and_preview:
-    if: ${{ github.event.pull_request.head.repo.full_name == github.repository && startsWith(github.event.pull_request.head.ref, 'feature/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,3 +18,4 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLAYGROUND_57433 }}
           projectId: playground-57433
+          channelId: ${{ github.ref_name }}
