@@ -18,3 +18,4 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLAYGROUND_57433 }}
           projectId: playground-57433
+          channelId: testing
