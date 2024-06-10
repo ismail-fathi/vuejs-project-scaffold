@@ -48,6 +48,7 @@ jobs:
           path: |
             ~/.npm
             ./node_modules
+            ./dist
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
@@ -69,6 +70,7 @@ jobs:
           path: |
             ~/.npm
             ./node_modules
+            ./dist
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
