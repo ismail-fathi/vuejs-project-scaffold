@@ -10,11 +10,11 @@ This template should help get you started developing with Vue 3 in Vite.
 
 TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
 
-## Customize configuration
+## Project Setup
 
 Once you clone the projec, change:
 
-- The project name as you want
+- The project folder
 - The package name in `package.json`
 - The project title in `index.html`
 - Change the Git remote origin using: git remote set-url origin https://github.com/ismail-fathi/{repo-name}.git
@@ -30,7 +30,17 @@ VITE_FIREBASE_APP_ID=
 VITE_FIREBASE_MEASUREMENT_ID=
 ```
 
-## Project Setup
+- The `.firebaserc` file project default name:
+
+```
+{
+  "projects": {
+    "default": "YOUR_FIREBASE_PROJECT_ID"
+  }
+}
+```
+
+- Run
 
 ```sh
 nvm use
