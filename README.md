@@ -40,6 +40,18 @@ VITE_FIREBASE_MEASUREMENT_ID=
 }
 ```
 
+- Enable the Github Workflows by uncommentig all the files in the `.github` folder
+- Change the value of the `projectId` in the workflows to your own Firebase projectID:
+
+```
+projectId: YOUR_FIREBASE_PROJECT_ID
+```
+
+- Set a new Github repository secret:
+
+  - name it: `FIREBASE_SERVICE_ACCOUNT`
+  - Set it to your Firebase service account
+
 - Run
 
 ```sh
