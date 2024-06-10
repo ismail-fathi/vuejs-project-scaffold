@@ -1,90 +1,90 @@
-name: Deploy to Firebase Hosting on feature branch
-on:
-  push:
-    branches:
-      - 'feature/**'
+# name: Deploy to Firebase Hosting on feature branch
+# on:
+#   push:
+#     branches:
+#       - 'feature/**'
 
-jobs:
-  ci:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Cache node modules
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.npm
-            ./node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install Dependencies
-        run: npm ci
-      - name: Cache node modules after install
-        uses: actions/cache@v4
-        with:
-          path: ./node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+# jobs:
+#   ci:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 20
+#       - name: Cache node modules
+#         uses: actions/cache@v4
+#         with:
+#           path: |
+#             ~/.npm
+#             ./node_modules
+#           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+#           restore-keys: |
+#             ${{ runner.os }}-node-
+#       - name: Install Dependencies
+#         run: npm ci
+#       - name: Cache node modules after install
+#         uses: actions/cache@v4
+#         with:
+#           path: ./node_modules
+#           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+#           restore-keys: |
+#             ${{ runner.os }}-node-
 
-  build:
-    runs-on: ubuntu-latest
-    needs: ci
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Restore node modules cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.npm
-            ./node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Build
-        run: npm run build
-      - name: Upload dist folder
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist-folder
-          path: dist/
+#   build:
+#     runs-on: ubuntu-latest
+#     needs: ci
+#     steps:
+#       - uses: actions/checkout@v4
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 20
+#       - name: Restore node modules cache
+#         uses: actions/cache@v4
+#         with:
+#           path: |
+#             ~/.npm
+#             ./node_modules
+#           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+#           restore-keys: |
+#             ${{ runner.os }}-node-
+#       - name: Build
+#         run: npm run build
+#       - name: Upload dist folder
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: dist-folder
+#           path: dist/
 
-  deploy_preview:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Restore node modules cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.npm
-            ./node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Download dist folder
-        uses: actions/download-artifact@v4
-        with:
-          name: dist-folder
-          path: dist/
-      - name: Deploy to Firebase preview channel
-        uses: FirebaseExtended/action-hosting-deploy@v0.9.0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          channelId: ${{ github.ref_name }}
-          projectId: playground-57433
+#   deploy_preview:
+#     runs-on: ubuntu-latest
+#     needs: build
+#     steps:
+#       - uses: actions/checkout@v4
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 20
+#       - name: Restore node modules cache
+#         uses: actions/cache@v4
+#         with:
+#           path: |
+#             ~/.npm
+#             ./node_modules
+#           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+#           restore-keys: |
+#             ${{ runner.os }}-node-
+#       - name: Download dist folder
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: dist-folder
+#           path: dist/
+#       - name: Deploy to Firebase preview channel
+#         uses: FirebaseExtended/action-hosting-deploy@v0.9.0
+#         with:
+#           repoToken: ${{ secrets.GITHUB_TOKEN }}
+#           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+#           channelId: ${{ github.ref_name }}
+#           projectId: YOUR_FIREBASE_PROJECT_ID
