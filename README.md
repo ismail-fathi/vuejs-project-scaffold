@@ -12,7 +12,7 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 
 ## Project Setup
 
-Once you clone the projec, change:
+Once you clone the project, change:
 
 - The project folder
 - The package name in `package.json`
